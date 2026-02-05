@@ -1,0 +1,24 @@
+{
+  "name": "automation-suite",
+  "version": "2.0.0",
+  "description": "Automated end-to-end testing suite",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio run ./wdio.conf.ts",
+    "start": "wdio run ./wdio.conf.ts",
+    "test:watch": "wdio run ./wdio.conf.ts --watch"
+  },
+  "keywords": ["automation", "testing", "webdriverio", "cucumber"],
+  "author": "QA Team",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "@wdio/cli": "^9.23.3",
+    "@wdio/cucumber-framework": "^9.23.3",
+    "@wdio/globals": "^9.23.0",
+    "@wdio/local-runner": "^9.23.3",
+    "@wdio/spec-reporter": "^9.23.3",
+    "expect-webdriverio": "^5.6.4"
+  }
+}
