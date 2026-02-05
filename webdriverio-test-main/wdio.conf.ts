@@ -52,7 +52,15 @@ export const config: WebdriverIO.Config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        maxInstances: 1,
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+            args: [
+                // run headed so you can see Chrome during manual checks
+                '--disable-gpu',
+                '--window-size=1920,1080'
+            ]
+        }
     }],
 
     //
@@ -87,6 +95,8 @@ export const config: WebdriverIO.Config = {
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
     // baseUrl: 'http://localhost:8080',
+    // Set the base URL for manual testing; update if your app uses a different host/port
+    baseUrl: 'http://localhost:3000',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

@@ -51,8 +51,14 @@ class LoginPage extends BasePage {
         }
 
         try {
+            // wait for inputs and button before interacting to avoid flakiness
+            await this.usernameField.waitForDisplayed({ timeout: 5000 });
             await this.usernameField.setValue(username);
+
+            await this.passwordField.waitForDisplayed({ timeout: 5000 });
             await this.passwordField.setValue(password);
+
+            await this.submitButton.waitForClickable({ timeout: 5000 });
             await this.submitButton.click();
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : String(error);
