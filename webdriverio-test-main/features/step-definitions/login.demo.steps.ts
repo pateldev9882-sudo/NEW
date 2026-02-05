@@ -18,13 +18,9 @@ const CONFIG = {
  */
 Given(/^user is on login page$/, async () => {
     await browser.url(CONFIG.demoLoginUrl);
-    await browser.waitUntil(
-        async () => {
-            const title = await browser.getTitle();
-            return title.includes(CONFIG.expectedTitle);
-        },
-        { timeout: CONFIG.navigationTimeout }
-    );
+    // Wait for the login form to be visible instead of relying on page title
+    const usernameField = await $(CONFIG.usernameSelector);
+    await usernameField.waitForDisplayed({ timeout: CONFIG.navigationTimeout });
 });
 
 /**
